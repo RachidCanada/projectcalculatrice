@@ -5,43 +5,55 @@
     <title>Calculatrice</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #eef2f5;
             margin: 0;
-            padding: 20px;
-            text-align: center;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
         header {
             background-color: #4CAF50;
             color: white;
-            padding: 10px 0;
+            padding: 15px 0;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         .container {
-            margin-top: 20px;
-            display: inline-block;
-            text-align: left;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
         }
         label {
-            margin-right: 10px;
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #333;
         }
         input, select {
-            padding: 8px;
-            margin: 5px 0;
+            padding: 10px;
             width: calc(100% - 20px);
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
         }
         button {
-            padding: 10px 20px;
-            font-size: 16px;
-            color: white;
+            width: 100%;
+            padding: 12px;
             background-color: #007BFF;
+            color: white;
             border: none;
             border-radius: 5px;
+            font-size: 16px;
             cursor: pointer;
-            width: 100%;
+            transition: background-color 0.3s ease;
         }
         button:hover {
             background-color: #0056b3;
@@ -50,6 +62,10 @@
             margin-top: 20px;
             font-size: 18px;
             color: #333;
+        }
+        .error {
+            color: #ff4c4c;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -62,10 +78,10 @@
     <form action="/calculate" method="post">
         <label for="number1">Nombre 1 :</label>
         <input type="number" id="number1" name="number1" required>
-        <br>
+
         <label for="number2">Nombre 2 :</label>
         <input type="number" id="number2" name="number2" required>
-        <br>
+
         <label for="operation">Opération :</label>
         <select name="operation" id="operation">
             <option value="add">Addition</option>
@@ -73,13 +89,13 @@
             <option value="multiply">Multiplication</option>
             <option value="divide">Division</option>
         </select>
-        <br>
+
         <button type="submit">Calculer</button>
     </form>
 
     <div class="result">
-        <h2 th:if="${message != null}">Résultat de la [[${message}]] : [[${result}]]</h2>
-        <p th:if="${message == 'Erreur: Division par zéro!'}" style="color:red;">[[${message}]]</p>
+        <h2 th:if="${message != null}" th:text="'Résultat de ' + ${message} + ' : ' + ${result}"></h2>
+        <p th:if="${message == 'Erreur: Division par zéro!'}" class="error" th:text="${message}"></p>
     </div>
 </div>
 </body>
