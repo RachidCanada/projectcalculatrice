@@ -3,9 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>Accueil</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+        }
+        h1 {
+            margin: 20px 0;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-<h1 th:text="${message}">Message par défaut si Thymeleaf ne fonctionne pas</h1>
-<h1>Allah y3ounk </h1>
+<header>
+    <h1>Bienvenue sur l'application Spring Boot</h1>
+</header>
+
+<p>Cliquez sur le bouton ci-dessous pour accéder à la calculatrice.</p>
+
+<a href="/calculator" class="button">Aller à la Calculatrice</a>
 </body>
 </html>
